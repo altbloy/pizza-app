@@ -1,0 +1,18 @@
+<div class="container">
+    <div style="margin-bottom: 10px;">
+        <app-search></app-search>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let item of (list$|async)">
+                    <app-pizza-panel [item]="item">
+                    </app-pizza-panel>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <app-basket></app-basket>
+        </div>
+    </div>
+</div>

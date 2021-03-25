@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" *ngIf="order$|async;let item; else notFound">
+            <ul>
+                <li>
+                    № {{item.id}} - {{item.status|orderStatus}}
+                </li>
+                
+            </ul>
+
+        </div>
+        <ng-template #notFound>
+            Заказ не найден
+        </ng-template>
+    </div>
+</div>

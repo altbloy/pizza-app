@@ -1,0 +1,16 @@
+<div *ngIf="items.length>0;else emptyMessage">
+    <app-list [list]="items"></app-list>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <span style="text-align: center;">Общая стоимость: {{fullPrice}} р</span>
+                <button class="btn btn-primary" [routerLink]="['/order/create']">Оформить заказ</button>
+                <button class="btn btn-primary" (click)="clean()">Очистить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #emptyMessage>
+    Корзина пуста.
+</ng-template>

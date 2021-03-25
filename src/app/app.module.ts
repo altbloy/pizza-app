@@ -3,16 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PizzaListComponent } from './pages/pizza-list/pizza-list.component';
+import { PizzaPanelComponent } from './pages/pizza-list/components/pizza-panel/pizza-panel.component';
+import { ApiService } from './services/api-service.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BasketService } from './services/basket.service';
+import { SharedModule } from './shared/modules/shared/shared.module';
+import { SearchComponent } from './pages/pizza-list/components/search/search.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PizzaListComponent,
+    PizzaPanelComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ApiService, BasketService],
+  bootstrap: [AppComponent],
+  exports: [PizzaPanelComponent, SearchComponent]
 })
 export class AppModule { }

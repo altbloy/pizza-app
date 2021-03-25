@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul>
+                <li *ngFor="let item of orderList$|async">
+                    <div *ngIf="item.status != 3; else withoutLink">
+                        <a [routerLink]="['details/'+item.id]"> №{{item.id}} Статус: {{item.status|orderStatus}}</a>
+                    </div>
+                    <ng-template #withoutLink>
+                        <span> №{{item.id}} Статус: {{item.status|orderStatus}}</span>
+                    </ng-template>
+                    <div *ngFor="let pizza of item.data">
+                        {{pizza.pizza.name}} x{{pizza.count}}
+                        <hr>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

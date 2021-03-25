@@ -1,0 +1,25 @@
+<div class="card" style="margin-bottom: 10px;">
+    <img [src]="item.imageUrl" style="height: 200px;" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">
+            {{item.description}}
+        </p>
+        <p class="card-text">
+            {{item.ingredients}}
+        </p>
+        <p class="card-text">
+            {{item.weight | weight}}
+        </p>
+        <p class="card-text">
+            {{item.price}} р
+        </p>
+        <div>
+            <app-count-button (countChange)="CountHandler($event)"></app-count-button>
+            <hr>
+            <div class="d-grid gap-2">
+                <button (click)="AddToBasket()" class="btn btn-primary">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+</div>
