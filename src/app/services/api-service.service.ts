@@ -15,7 +15,17 @@ export class ApiService {
       imageUrl: "https://eda.ru/img/eda/c620x415i/s2.eda.ru/StaticContent/Photos/120131085053/171027192707/p_O.jpg",
       ingredients: ["грибочки", "колбасня"],
       price: 300,
-      weight: 2000
+      weight: 2000,
+      additions:[
+        {
+          name: "Убрать зелень",
+          value: false
+        },
+        {
+          name: "Убрать что-то еще",
+          value: false
+        },
+      ]
     },
     {
       id: 2,
@@ -48,6 +58,6 @@ export class ApiService {
   constructor() { }
 
   public getPizzaList(): Observable<Pizza[]> {
-    return of(this._list).pipe(delay(1000));
+    return of([...this._list]).pipe(delay(1000));
   }
 }

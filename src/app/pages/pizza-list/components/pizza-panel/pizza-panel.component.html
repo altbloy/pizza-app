@@ -9,12 +9,11 @@
             {{item.ingredients}}
         </p>
         <p class="card-text">
-            {{item.weight | weight}}
-        </p>
-        <p class="card-text">
-            {{item.price}} р
+            {{item.weight | weight}} - {{item.price}} р
         </p>
         <div>
+            <app-checkbox-list *ngIf="item.additions" [list]="item.additions" (changeEvent)="AdditionHander($event)"></app-checkbox-list>
+            <hr>
             <app-count-button (countChange)="CountHandler($event)"></app-count-button>
             <hr>
             <div class="d-grid gap-2">

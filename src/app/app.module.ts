@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasketService } from './services/basket.service';
 import { SharedModule } from './shared/modules/shared/shared.module';
 import { SearchComponent } from './pages/pizza-list/components/search/search.component';
+import { BasketGuard } from './guardians/basket.guard';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { SearchComponent } from './pages/pizza-list/components/search/search.com
     ReactiveFormsModule,
     SharedModule
   ],
-  providers: [ApiService, BasketService],
+  providers: [ApiService, BasketService,BasketGuard],
   bootstrap: [AppComponent],
   exports: [PizzaPanelComponent, SearchComponent]
 })

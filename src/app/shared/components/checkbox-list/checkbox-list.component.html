@@ -1,0 +1,6 @@
+<div *ngIf="list" class="d-grid gap-2">
+    <div *ngFor="let addition of list" class="custom-control custom-checkbox mr-sm-2">
+        <input type="checkbox" class="custom-control-input" (click)="onChange($event,addition)">
+        <label class="custom-control-label">{{addition.name}}</label>
+    </div>
+</div>

@@ -1,3 +1,5 @@
+import { PizzaAddition } from "./pizza-addition";
+
 export interface Pizza {
     id:number,
     name:string,
@@ -5,5 +7,6 @@ export interface Pizza {
     description:string,
     ingredients:string[],
     weight:number,
-    price: number
+    price: number,
+    additions?: PizzaAddition[];
 }

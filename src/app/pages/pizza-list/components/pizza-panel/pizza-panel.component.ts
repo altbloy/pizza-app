@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Pizza } from 'src/app/models/pizza';
+import { PizzaAddition } from 'src/app/models/pizza-addition';
 import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
@@ -19,8 +20,12 @@ export class PizzaPanelComponent implements OnInit {
     this.count = value;
     console.log(value);
   }
-
+  public AdditionHander(list:PizzaAddition[])
+  {
+    console.log(this.item.additions);
+    this.item.additions = list;
+  }
   public AddToBasket(){
-    this.basket.addItem({count:this.count,pizza:this.item});
+    this.basket.addItem(JSON.parse(JSON.stringify({count:this.count,pizza:this.item})));
   }
 }

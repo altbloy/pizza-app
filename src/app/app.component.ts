@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { BasketService } from './services/basket.service';
+import { DialogService } from './services/dialog.service';
+import { ModalDialogComponent } from './shared/components/modal/modal/dialog/modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   BasketItemCount: number = 0;
 
-  constructor(private basket: BasketService) { }
+  constructor(private basket: BasketService,private dialogService:DialogService) { }
 
   ngOnInit(): void {
     this.subscriptions.push(this.basket.BasketChangeEvent.subscribe(x=> {
@@ -24,5 +26,4 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach(x=>x.unsubscribe());
   }
-
 }
