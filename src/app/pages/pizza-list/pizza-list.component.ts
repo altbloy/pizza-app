@@ -27,13 +27,19 @@ export class PizzaListComponent implements AfterViewInit, OnDestroy {
         this.api.getPizzaList(),
         this.searchPanel.SearchEvent.pipe(
           debounceTime(300),
-          startWith({name:''})
+          startWith({ name: '', addition: '' })
         )
       ]
     ).pipe(
       map(([data, query]) => {
         const lowerCaseQuery = query.name.toLowerCase();
-        return data.filter(x => x.name.toLowerCase().includes(lowerCaseQuery));
+        const lowerCaseAdditionQuery = query.addition.toLowerCase();
+        var filtered = data.filter(x => x.name.toLowerCase().includes(lowerCaseQuery));
+        if (query.addition != '')
+          filtered = filtered.filter(
+            x => x.additions && x.additions.filter(a => a.name.toLowerCase().includes(lowerCaseAdditionQuery)).length > 0
+          );
+        return filtered;
       })
     );
   }

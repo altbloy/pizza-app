@@ -10,7 +10,7 @@ import { PizzaSearch } from 'src/app/models/pizza-search';
 export class SearchComponent implements OnInit {
 
   constructor() { }
-  search:PizzaSearch = {name:""};
+  search:PizzaSearch = {name:"",addition:""};
 
   @Output() SearchEvent = new EventEmitter<PizzaSearch>();
 

@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BasketService } from './services/basket.service';
 import { DialogService } from './services/dialog.service';
 import { ModalDialogComponent } from './shared/components/modal/modal/dialog/modal-dialog/modal-dialog.component';
@@ -9,21 +10,19 @@ import { ModalDialogComponent } from './shared/components/modal/modal/dialog/mod
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   title = 'pizza-app';
-  private subscriptions: Subscription[] = [];
-  BasketItemCount: number = 0;
 
-  constructor(private basket: BasketService,private dialogService:DialogService) { }
+  constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
-    this.subscriptions.push(this.basket.BasketChangeEvent.subscribe(x=> {
-        this.BasketItemCount = x.length;
-      }
-    ));
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(x=>x.unsubscribe());
+  @HostListener('window:beforeunload', ['$event'])
+  onWindowClose(event: any): void {
+    if (this.basketService.getList().length > 0) {
+      event.preventDefault();
+      event.returnValue = "корзина не пуста, точно хотите уйти?";
+    }
   }
 }

@@ -1,6 +1,10 @@
 <div class="row">
-    <div class="col-auto">
-        <label class="col-sm-2 col-form-label">Название</label>
-        <input id="searchNameInput" type="text" class="form-control" [(ngModel)]="search.name" (keyup)="onChange()" >
-      </div>
+  <div class="col-auto">
+    <label class="col-sm-2 col-form-label">Название</label>
+    <input id="searchNameInput" type="text" class="form-control" [(ngModel)]="search.name" (keyup)="onChange()">
+  </div>
+  <div class="col-auto">
+    <label class="col-sm-2 col-form-label">Дополнения</label>
+    <input id="searchNameInput" type="text" class="form-control" [(ngModel)]="search.addition" (keyup)="onChange()">
+  </div>
 </div>

@@ -11,6 +11,7 @@ import { BasketService } from './services/basket.service';
 import { SharedModule } from './shared/modules/shared/shared.module';
 import { SearchComponent } from './pages/pizza-list/components/search/search.component';
 import { BasketGuard } from './guardians/basket.guard';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BasketGuard } from './guardians/basket.guard';
     PizzaListComponent,
     PizzaPanelComponent,
     SearchComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,

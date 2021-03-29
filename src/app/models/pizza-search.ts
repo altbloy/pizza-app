@@ -1,3 +1,4 @@
 export interface PizzaSearch {
-    name:string
+    name:string,
+    addition:string
 }
